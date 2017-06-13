@@ -2,7 +2,6 @@
 ##### Developed by Russ Gasdia #####
 ##### All questions and bugs should be directed to russell.gasdia@yale.edu #####
 
-
 ### Load Libraries and Other Set-up
      ## Clear Environment
      rm(list = ls())
@@ -29,3 +28,5 @@
      
 ### Clean Output
      rm(list=setdiff(ls(), "vd17"))
+
+
