@@ -28,5 +28,7 @@
      
 ### Clean Output
      rm(list=setdiff(ls(), "vd17"))
+     file_name <- paste("./output/vd17_scrape_", Sys.Date(), ".csv", sep="")
+     write.csv(vd17, file_name, row.names=F)
 
 
