@@ -3,6 +3,7 @@
 ## All questions and bugs should be directed to russell.gasdia@yale.edu ##
 ## Test of Commits 2 ##
 
+
 #Set-up
 rm(list = ls())
 require("rvest")
