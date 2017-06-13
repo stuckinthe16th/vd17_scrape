@@ -1,7 +1,10 @@
 ##### A SCRAPE FOR "Bibliography of the Hebrew Book" #####
 ##### Developed by Russ Gasdia #####
 ## All questions and bugs should be directed to russell.gasdia@yale.edu ##
+<<<<<<< HEAD
 ## Test of Commits ##
+=======
+>>>>>>> 69680abdede3ed2cca0a9f14c307494b1ad46ed9
 
 #Set-up
 rm(list = ls())
