@@ -97,7 +97,8 @@ gb_search_gen <- function(year) {
      
      
      #Data Frame of Initial Year Results
-     cat("Scraping")
+     cat("\n")
+     cat("Scraping ")
      cat(year)
      cat(" Page ")
      cat(cur_pos_page)
