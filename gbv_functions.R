@@ -3,8 +3,8 @@
 ### All questions and bugs should be directed to russell.gasdia@yale.edu ###
 
 ## Load Libraries
-if (!require("pacman")) install.packages("pacman")
-pacman::p_load("rvest", "httr", "dplyr")
+invisible(if (!require("pacman")) install.packages("pacman"))
+invisible(pacman::p_load("rvest", "httr", "dplyr"))
 
 ##Function: Scrape GBV Page
      #Returns data frame
