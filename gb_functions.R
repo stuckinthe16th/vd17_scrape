@@ -76,6 +76,7 @@ gb_search_gen <- function(year){
 
      #Load Initial Year Search Page
      cur_pos <- 1
+     cur_pos_page <- 1
      url <- "https://opacplus.bib-bvb.de/TouchPoint_touchpoint/start.do?SearchProfile=Altbestand&SearchType=2"
      pgsession <- html_session(url)
      pgform <-html_form(pgsession)[[1]]
@@ -90,6 +91,7 @@ gb_search_gen <- function(year){
      
      
      #Data Frame of Initial Year Results
+     cat(paste("Scraping ", year, " Page ", cur_pos_page, sep=""))
      assign(paste(year, "_data", sep=""), gb_search_process(list_vdn))
      
      #Loop Over "Next" Pages
@@ -97,6 +99,8 @@ gb_search_gen <- function(year){
      page_result <- html(page_result$url)
      while(next_loop=="go"){
           cur_pos <- cur_pos+10
+          cur_pos_page <- cur_pos_page + 1
+          cat(paste(" | ", cur_pos_page, sep=""))
           pagination <- page_result %>%
                html_nodes(".anchor+ .navigation a") %>%
                html_attr("href")
