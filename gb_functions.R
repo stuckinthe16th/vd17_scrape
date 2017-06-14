@@ -3,9 +3,11 @@
 ### All questions and bugs should be directed to russell.gasdia@yale.edu ###
 
 ## Load Libraries
-invisible(if (!require("pacman"))
-     install.packages("pacman"))
-invisible(pacman::p_load("rvest", "httr", "dplyr"))
+sink(tempfile())
+if (!require("pacman"))
+     install.packages("pacman")
+pacman::p_load("rvest", "httr", "dplyr")
+sink()
 
 ##Function: Scrape G-B Page
 #Returns named character vector
@@ -83,17 +85,18 @@ gb_search_gen <- function(year) {
      cur_pos_page <- 1
      url <-
           "https://opacplus.bib-bvb.de/TouchPoint_touchpoint/start.do?SearchProfile=Altbestand&SearchType=2"
-     invisible(pgsession <- html_session(url))
-     invisible(pgform <- html_form(pgsession)[[1]])
+     pgsession <- html_session(url)
+     pgform <- html_form(pgsession)[[1]]
      filled_form <- set_values(
           pgform,
           "searchRestrictionValue1[0]" = year,
           "searchRestrictionValue2[0]" = year
      )
-     invisible(page_result <- submit_form(session = pgsession, form = filled_form))
+     suppressMessages(page_result <- submit_form(session = pgsession, form = filled_form))
      list_vdn <- page_result %>%
           html_nodes("b") %>%
           html_text()
+     
      
      
      #Data Frame of Initial Year Results
