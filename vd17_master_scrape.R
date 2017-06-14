@@ -4,7 +4,7 @@
 
 ### Load Libraries and Other Set-up
      ##Set-up Sink
-     sink("vd17_master_scrape_ouput.txt")
+     #sink("vd17_master_scrape_ouput.txt")
 
      ## Clear Environment
      rm(list = ls())
@@ -42,5 +42,5 @@
      rm(list=setdiff(ls(), "vd17"))
      file_name <- paste("./output/vd17_scrape_", Sys.Date(), ".csv", sep="")
      write.csv(vd17, file_name, row.names=F)
-     sink()
+     #sink()
 
