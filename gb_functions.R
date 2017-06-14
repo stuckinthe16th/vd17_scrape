@@ -4,7 +4,7 @@
 
 ## Load Libraries
 if (!require("pacman")) install.packages("pacman")
-pacman::p_load("rvest","xlsx", "httr", "dplyr")
+pacman::p_load("rvest", "httr", "dplyr")
 
 ##Function: Scrape G-B Page
      #Returns named character vector
@@ -19,6 +19,7 @@ gb_scrape <- function(url){
      data_full <- cur_page %>%
           html_nodes(".titleinfo li") %>%
           html_text()
+     if(nrow(data_full>1)){
      #Produce Clean Data
      data_clean <- character()
      for(x in 1:length(data_full)){
@@ -39,6 +40,9 @@ gb_scrape <- function(url){
      names(data_clean) <- data_labels
      data_clean$permlink <- url
      return(data_clean)
+     } else{
+          return(data.frame())
+     }
 }
 
 ##Function: Process Search Page
