@@ -4,7 +4,7 @@
 
 ## Load Libraries
 if (!require("pacman")) install.packages("pacman")
-pacman::p_load("rvest","xlsx", "httr", "dplyr")
+pacman::p_load("rvest", "httr", "dplyr")
 
 ##Function: Scrape GBV Page
      #Returns data frame
