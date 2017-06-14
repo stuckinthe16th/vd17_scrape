@@ -16,8 +16,15 @@
      #Can iterate by year and gather VDN Numbers
      
 
-     ##Perform Search, Loop by Year
-     vd17 <- gb_search_gen(1601)
+     ##Perform Search, Scrape Each Result, Loop by Year
+     for(year_loop in 1601:1611){
+          temp_df <- gb_search_gen(year_loop)
+          if(year_loop==1601){
+               vd17 <- temp_df
+          } else{
+               vd17 <- bind_rows(vd17, temp_df)
+          }
+     }
           
       
 
