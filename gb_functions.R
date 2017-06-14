@@ -19,7 +19,7 @@ gb_scrape <- function(url){
      data_full <- cur_page %>%
           html_nodes(".titleinfo li") %>%
           html_text()
-     if(nrow(data_full>1)){
+     if(length(data_full>1)){
      #Produce Clean Data
      data_clean <- character()
      for(x in 1:length(data_full)){
