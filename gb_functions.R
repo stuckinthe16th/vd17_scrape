@@ -97,8 +97,10 @@ gb_search_gen <- function(year) {
      
      
      #Data Frame of Initial Year Results
-     cat("Test")
-     cat(paste("Scraping ", year, " Page ", cur_pos_page, sep = ""))
+     cat("Scraping")
+     cat(year)
+     cat(" Page ")
+     cat(cur_pos_page)
      assign(paste(year, "_data", sep = ""),
             gb_search_process(list_vdn))
      
@@ -110,7 +112,8 @@ gb_search_gen <- function(year) {
      while (next_loop == "go") {
           cur_pos <- cur_pos + 10
           cur_pos_page <- cur_pos_page + 1
-          cat(paste(" | ", cur_pos_page, sep = ""))
+          cat(" | ")
+          cat(cur_pos_page)
           pagination <- page_result %>%
                html_nodes(".anchor+ .navigation a") %>%
                html_attr("href")
