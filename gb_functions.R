@@ -97,6 +97,7 @@ gb_search_gen <- function(year) {
      
      
      #Data Frame of Initial Year Results
+     cat("Test")
      cat(paste("Scraping ", year, " Page ", cur_pos_page, sep = ""))
      assign(paste(year, "_data", sep = ""),
             gb_search_process(list_vdn))
