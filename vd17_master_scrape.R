@@ -20,7 +20,7 @@
      
 
      ##Perform Search, Scrape Each Result, Loop by Year
-     for(year_loop in 1601:1611){
+     for(year_loop in 1601:1606){
           temp_df <- gb_search_gen(year_loop)
           if(year_loop==1601){
                vd17 <- temp_df
