@@ -52,7 +52,7 @@ gb_scrape <- function(url) {
 
 ##Function: Process Search Page
 #Returns data frame
-gb_search_process <- function(list_vdn) {
+gb_search_process <- function(list_vdn, year, cur_pos_page) {
      #Create URLs for Each Result from VDNs
      list_urls <- list()
      for (x in 1:length(list_vdn)) {
@@ -111,7 +111,7 @@ gb_search_gen <- function(year) {
      #Data Frame of Initial Year Results
      cat("\n", "Scraping ", year, " Page: ", cur_pos_page, " ", sep="")
      assign(paste(year, "_data", sep = ""),
-            gb_search_process(list_vdn))
+            gb_search_process(list_vdn, year, cur_pos_page))
      
      
      #Loop Over "Next" Pages
@@ -140,7 +140,7 @@ gb_search_gen <- function(year) {
                list_vdn <- page_result %>%
                     html_nodes("b") %>%
                     html_text()
-               temp_df <- gb_search_process(list_vdn)
+               temp_df <- gb_search_process(list_vdn, year, cur_pos_page)
                assign(paste(year, "_data", sep = ""),
                       bind_rows(get(
                            paste(year, "_data", sep = "")
