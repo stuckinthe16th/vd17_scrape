@@ -13,41 +13,41 @@ sink()
 #Returns named character vector
 gb_scrape <- function(url) {
      cur_page <- read_html(url)
-     #Load Data Labels
-     data_labels <- cur_page %>%
-          html_nodes(".titleinfo .c2") %>%
-          html_text()
-     #Load Full Data
-     data_full <- cur_page %>%
-          html_nodes(".titleinfo li") %>%
-          html_text()
-     if (length(data_full > 1)) {
-          #Produce Clean Data
-          data_clean <- character()
-          for (x in 1:length(data_full)) {
-               data_clean[x] <- gsub(data_labels[x], "", data_full[x])
-          }
-          #Drop Missing Data
-          for (x in 1:length(data_clean)) {
-               if (data_clean[x] == "" | is.na(data_clean[x])) {
-                    data_clean <- data_clean[-x]
-                    data_labels <- data_labels[-x]
+          #Load Data Labels
+          data_labels <- cur_page %>%
+               html_nodes(".titleinfo .c2") %>%
+               html_text()
+          #Load Full Data
+          data_full <- cur_page %>%
+               html_nodes(".titleinfo li") %>%
+               html_text()
+          if (length(data_full > 1)) {
+               #Produce Clean Data
+               data_clean <- character()
+               for (x in 1:length(data_full)) {
+                    data_clean[x] <- gsub(data_labels[x], "", data_full[x])
                }
+               #Drop Missing Data
+               for (x in 1:length(data_clean)) {
+                    if (data_clean[x] == "" | is.na(data_clean[x])) {
+                         data_clean <- data_clean[-x]
+                         data_labels <- data_labels[-x]
+                    }
+               }
+               #Clean Data Labels
+               for (x in 1:length(data_labels)) {
+                    data_labels[x] <-
+                         substr(data_labels[x],
+                                start = 1,
+                                stop = nchar(data_labels[x]) - 2)
+               }
+               #Apply Labels to Data and Add Permlink
+               names(data_clean) <- data_labels
+               data_clean$permlink <- url
+               return(data_clean)
+          } else{
+               return(data.frame())
           }
-          #Clean Data Labels
-          for (x in 1:length(data_labels)) {
-               data_labels[x] <-
-                    substr(data_labels[x],
-                           start = 1,
-                           stop = nchar(data_labels[x]) - 2)
-          }
-          #Apply Labels to Data and Add Permlink
-          names(data_clean) <- data_labels
-          data_clean$permlink <- url
-          return(data_clean)
-     } else{
-          return(data.frame())
-     }
 }
 
 ##Function: Process Search Page
@@ -67,7 +67,15 @@ gb_search_process <- function(list_vdn) {
      
      #Scrape Each Page from Search
      for (y in 1:length(list_urls)) {
-          temp_df <- data.frame(as.list(gb_scrape(list_urls[[y]])))
+          for(z in 1:10){
+               temp_df <<- try(data.frame(as.list(gb_scrape(list_urls[[y]]))), silent=TRUE)
+               if(inherits(temp_df, "try-error")) {
+                    cat("/r", "502 Error Retrying Scrape for ", cur_pos_page)
+               } else{
+                         break
+                    }
+          
+          }
           if (y == 1) {
                running_df <- temp_df
           } else{
@@ -100,11 +108,7 @@ gb_search_gen <- function(year) {
      
      
      #Data Frame of Initial Year Results
-     cat("\n")
-     cat("Scraping ")
-     cat(year)
-     cat(" Page ")
-     cat(cur_pos_page)
+     cat("\n", "Scraping ", year, " Page: ", cur_pos_page, sep="")
      assign(paste(year, "_data", sep = ""),
             gb_search_process(list_vdn))
      
@@ -116,8 +120,7 @@ gb_search_gen <- function(year) {
      while (next_loop == "go") {
           cur_pos <- cur_pos + 10
           cur_pos_page <- cur_pos_page + 1
-          cat(" | ")
-          cat(cur_pos_page)
+          cat("\r", "Scraping ", year, " Page: ", cur_pos_page, sep="")
           pagination <- page_result %>%
                html_nodes(".anchor+ .navigation a") %>%
                html_attr("href")
@@ -145,5 +148,6 @@ gb_search_gen <- function(year) {
                next_loop <- "stop"
           }
      }
+     cat("\r", "Scraped", cur_pos_page, "Pages from ", year, sep="")
      return(get(paste(year, "_data", sep = "")))
 }
