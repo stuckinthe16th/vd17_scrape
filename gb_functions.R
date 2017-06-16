@@ -68,7 +68,7 @@ gb_search_process <- function(list_vdn, year, cur_pos_page) {
      #Scrape Each Page from Search
      for (y in 1:length(list_urls)) {
           for(z in 1:10){
-               temp_df <<- try(data.frame(as.list(gb_scrape(list_urls[[y]]))), silent=TRUE)
+               temp_df <- try(data.frame(as.list(gb_scrape(list_urls[[y]]))), silent=TRUE)
                if(inherits(temp_df, "try-error")) {
                     cat("\r", "502 Error Retrying Scrape for ", year, " Page: ", cur_pos_page, " ", sep="")
                     Sys.sleep(30)
@@ -136,7 +136,16 @@ gb_search_gen <- function(year) {
                }
           }
           if (next_url != "") {
-               page_result <- read_html(next_url)
+               for(z in 1:10){
+                    page_result <- try(read_html(next_url), silent=TRUE)
+                    if(inherits(page_result, "try-error")) {
+                         cat("\r", "502 Error Retrying Scrape for ", year, " Page: ", cur_pos_page, " ", sep="")
+                         Sys.sleep(30)
+                    } else{
+                         break
+                    }
+                    
+               }
                list_vdn <- page_result %>%
                     html_nodes("b") %>%
                     html_text()
