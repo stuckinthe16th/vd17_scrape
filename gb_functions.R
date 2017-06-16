@@ -126,6 +126,7 @@ gb_search_gen <- function(year) {
                html_nodes(".anchor+ .navigation a") %>%
                html_attr("href")
           next_url <- ""
+          if(length(pagination)>1){
           for (x in 1:length(pagination)) {
                if (regexpr(paste("curPos=", cur_pos, "#", sep = ""),
                            pagination[x])[1] != -1) {
@@ -156,6 +157,7 @@ gb_search_gen <- function(year) {
                       ), temp_df))
           } else {
                next_loop <- "stop"
+          }
           }
      }
      cat("\r", "Scraped ", cur_pos_page, " Pages from ", year, sep="")
