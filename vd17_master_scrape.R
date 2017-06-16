@@ -44,6 +44,7 @@
      cat("Cleaning results...\n")
      vd17 <- vd17[, c("Normnummer", "Verfasser", "Titel", "Impressum", "Kollation", "Verf..Ang.", "Weitere.Pers.", "Weitere.Informationen", "permlink")]
      names(vd17) <- c("vdn", "author_gb", "title_gb", "imprint_gb", "collation_gb", "author_information_gb", "other_people_gb", "other_information_gb", "permlink_gb")
+     vd17$vdn <- sapply(vd17$vdn, function(x){gsub("VD17 ", "", x)})
      cat("Completed\n\n")
           
       
