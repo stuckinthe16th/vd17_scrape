@@ -70,7 +70,7 @@ gb_search_process <- function(list_vdn, year, cur_pos_page) {
           for(z in 1:10){
                temp_df <- try(data.frame(as.list(gb_scrape(list_urls[[y]]))), silent=TRUE)
                if(inherits(temp_df, "try-error")) {
-                    cat("\r", "502 Error Retrying Scrape for ", year, " Page: ", cur_pos_page, " ", sep="")
+                    cat("\r", "502 Err. for ", year, " pg. ", cur_pos_page, "       ", sep="")
                     Sys.sleep(30)
                } else{
                          break
@@ -109,7 +109,7 @@ gb_search_gen <- function(year) {
      
      
      #Data Frame of Initial Year Results
-     cat("\n", "Scraping ", year, " Page: ", cur_pos_page, " ", sep="")
+     cat("\n", "Scraping ", year, " Page: ", cur_pos_page, "       ", sep="")
      assign(paste(year, "_data", sep = ""),
             gb_search_process(list_vdn, year, cur_pos_page))
      
@@ -121,7 +121,7 @@ gb_search_gen <- function(year) {
      while (next_loop == "go") {
           cur_pos <- cur_pos + 10
           cur_pos_page <- cur_pos_page + 1
-          cat("\r", "Scraping ", year, " Page: ", cur_pos_page, " ", sep="")
+          cat("\r", "Scraping ", year, " Page: ", cur_pos_page, "       ", sep="")
           pagination <- page_result %>%
                html_nodes(".anchor+ .navigation a") %>%
                html_attr("href")
@@ -139,7 +139,7 @@ gb_search_gen <- function(year) {
                for(z in 1:10){
                     page_result <- try(read_html(next_url), silent=TRUE)
                     if(inherits(page_result, "try-error")) {
-                         cat("\r", "502 Error Retrying Scrape for ", year, " Page: ", cur_pos_page, " ", sep="")
+                         cat("\r", "502 Err. for ", year, " pg. ", cur_pos_page, "       ", sep="")
                          Sys.sleep(30)
                     } else{
                          break
