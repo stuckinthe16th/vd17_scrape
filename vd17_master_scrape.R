@@ -37,7 +37,7 @@
      ##Perform Search, Scrape Each Result, Loop by Year
      for(year_loop in years){
           temp_df <- gb_search_gen(year_loop)
-          if(year_loop==1601){
+          if(year_loop==years[1]){
                vd17 <- temp_df
           } else{
                vd17 <- bind_rows(vd17, temp_df)
