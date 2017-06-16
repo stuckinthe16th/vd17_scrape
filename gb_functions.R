@@ -149,6 +149,6 @@ gb_search_gen <- function(year) {
                next_loop <- "stop"
           }
      }
-     cat("\r", "Scraped", cur_pos_page, "Pages from ", year, sep="")
+     cat("\r", "Scraped ", cur_pos_page, " Pages from ", year, sep="")
      return(get(paste(year, "_data", sep = "")))
 }

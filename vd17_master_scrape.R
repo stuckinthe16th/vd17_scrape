@@ -4,6 +4,14 @@
 
 ### Load Libraries and Other Set-up
 
+     cat("--------------------------------------------\n")
+     cat("--------------------------------------------\n")
+     cat("Scrape of the VD17 Catalogue of German Books\n")
+     cat("--------------------------------------------\n")
+     cat("--------------------------------------------\n\n")
+     cat("Scrape started: ", format(Sys.time()), "\n", sep="")
+     cat("Results saved to ", getwd(), "/output \n\n", sep="")
+
      ## Clear Environment
      rm(list = ls())
 
@@ -18,6 +26,9 @@
      #https://opacplus.bib-bvb.de/TouchPoint_touchpoint/start.do?SearchProfile=Altbestand&SearchType=2
      #Can iterate by year and gather VDN Numbers
      
+     cat("-----------------------------------\n")
+     cat("Processing Data from Gateway-Bayern\n")
+     cat("-----------------------------------\n")
 
      ##Perform Search, Scrape Each Result, Loop by Year
      for(year_loop in 1601:1606){
