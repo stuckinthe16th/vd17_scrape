@@ -15,5 +15,5 @@ options(WordpressLogin = c(russg = 'skoal90'), WordpressURL = 'http://earlymoder
 
 #Post new entry to the wordpress blog
 library(knitr)
-knit2wp('./scrape_reporting/scrape_test_results.Rmd', title = 'Most Recent Test Scrape of the VD17', action="editPost", postid=357, publish=F)
+knit2wp('scrape_test_results.Rmd', title = 'Most Recent Test Scrape of the VD17', action="editPost", postid=357, publish=F)
 
