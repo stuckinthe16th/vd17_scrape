@@ -5,7 +5,8 @@
 ###CURRENTLY CHOOSES 100 SAMPLE RESULTS FROM 3 RANDOM YEARS###
 
 ### Load Libraries and Other Set-up
-
+     
+     sink(file="./scrape_reporting/test_scrape_output.txt", append=FALSE, split=TRUE)
      cat("\n\n--------------------------------------------\n")
      cat("--------------------------------------------\n")
      cat("Scrape of the VD17 Catalogue of German Books\n")
@@ -42,12 +43,13 @@
           } else{
                vd17 <- bind_rows(vd17, temp_df)
           }
+          vd17$year_gb <- year_loop  #NOT: NEED TO ACTUALLY EXTRACT YEAR LATER
      }
      
      ##Cleaning Results
      cat("Cleaning results...\n")
-     vd17 <- vd17[, c("Normnummer", "Verfasser", "Titel", "Impressum", "Kollation", "Verf..Ang.", "Weitere.Pers.", "Weitere.Informationen", "permlink")]
-     names(vd17) <- c("vdn", "author_gb", "title_gb", "imprint_gb", "collation_gb", "author_information_gb", "other_people_gb", "other_information_gb", "permlink_gb")
+     vd17 <- vd17[, c("Normnummer", "Verfasser", "Titel", "year_gb", "Impressum", "Kollation", "Verf..Ang.", "Weitere.Pers.", "Weitere.Informationen", "permlink")]
+     names(vd17) <- c("vdn", "author_gb", "title_gb", "year_gb", "imprint_gb", "collation_gb", "author_information_gb", "other_people_gb", "other_information_gb", "permlink_gb")
      vd17$vdn <- sapply(vd17$vdn, function(x){gsub("VD17 ", "", x)})
      cat("Completed\n\n")
           
@@ -56,21 +58,6 @@
      
 ### Supplementary Scrape: 
      #https://gso.gbv.de/DB=1.28/
-     
-     cat("\n\n-----------------------------------\n")
-     cat("Processing Data from Gateway-Bayern\n")
-     cat("-----------------------------------\n")
-     
-     
-     ##For Working: Side-load Previous Data
-     cat("Side loading previously scraped data for testing purposes...\n")
-     library(readr)
-     vd17 <- suppressMessages(read_csv("C:/Users/russg/Dropbox (Personal)/R Server Files/vd17_scrape/output/vd17_scrape_2017-06-16.csv"))
-     
-     
-     ### Supplementary Scrape: GBV
-     #https://gso.gbv.de/DB=1.28/
-     #Can iterate using VDN Numbers to gather more information on printers etc.
      
      cat("\n\n------------------------\n")
      cat("Processing Data from GBV\n")
@@ -132,4 +119,5 @@
      rm(list=setdiff(ls(), "vd17"))
      file_name <- paste("./output/vd17_scrape_", Sys.Date(), ".csv", sep="")
      write.csv(vd17, file_name, row.names=F)
-
+     write.csv(vd17, "/var/www/html/data/test_scrape_results.csv", row.names=F)
+     sink()

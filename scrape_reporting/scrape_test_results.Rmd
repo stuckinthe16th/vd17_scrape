@@ -1,0 +1,65 @@
+---
+title: "Most Recent Test Scrape of the VD17"
+date: "`r format(Sys.time(), '%B %d, %Y @ %I:%M %p')`"
+output: html_document
+---
+
+##Note on this page
+This page reports the results of the most recent test of the VD17 scrape, finsished at the date and time noted above.  It is only a test of the scraping program, and only reports 100 random results from 3 random years in the seventeenth century.  
+
+If you would like to contribute to this project, or examine the code underlying this scrape, vist the [GitHub page](https://github.com/stuckinthe16th/vd17_scrape) for this project.  The full results of the scrape can be downloaded from [here](http://earlymodernprinting.com/data/test_scrape_results.csv).
+
+
+##Scrape Report
+```{r scrape_report, echo=FALSE}
+suppressWarnings(cat(readLines('./test_scrape_output.txt'), sep = '\n'))
+```
+
+
+##Statistics of Results
+```{r echo=F,results='asis',error=F,warning=F}
+scrape_results <- read.csv("C:/Users/russg/Dropbox (Personal)/R Server Files/vd17_scrape/output/vd17_scrape_2017-06-16.csv")
+scrape_years <- unique(scrape_results$year_gb)
+scrape_results_stats <-data.frame()
+for(x in 1:length(scrape_years)){
+     scrape_results_stats <- rbind(scrape_results_stats, data.frame(year=scrape_years[x], num_books= nrow(scrape_results[scrape_results$year_gb==scrape_years[x],])))
+     
+}
+
+library(knitr)
+kable(scrape_results_stats, format="html")
+
+
+
+
+
+```
+
+
+
+
+
+#IGNORE BELOW
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

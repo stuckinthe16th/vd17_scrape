@@ -1,0 +1,1 @@
+scrape_results <- read.csv("C:/Users/russg/Dropbox (Personal)/R Server Files/vd17_scrape/output/vd17_scrape_2017-06-16.csv")
