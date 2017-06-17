@@ -10,8 +10,8 @@ This page reports the results of the most recent test of the VD17 scrape, finsis
 The point of this page is largely to catch any obvious errors as I build the scraping engine.  If you would like to contribute to the program, or examine the code underlying this scrape, vist the [GitHub page](https://github.com/stuckinthe16th/vd17_scrape) for this project.  The full results of the scrape can be downloaded from [here](http://earlymodernprinting.com/data/test_scrape_results.csv).
 
 <h3> Basic Information </h3>
-Scrape started: `r readRDS("./scrape_reporting/start_time.rds")`
-Scrape ended: `r readRDS("./scrape_reporting/end_time.rds")`
+Scrape started: `r readRDS("./start_time.rds")`
+Scrape ended: `r readRDS("./end_time.rds")`
 Report produced: `r format(Sys.time(), '%B %d, %Y @ %I:%M %p')`
 
 
