@@ -12,6 +12,7 @@
      cat("Scrape of the VD17 Catalogue of German Books\n")
      cat("--------------------------------------------\n")
      cat("--------------------------------------------\n\n")
+     saveRDS(format(Sys.time(), '%B %d, %Y @ %I:%M %p'), "./scrape_reporting/start_time.rds")
      cat("Scrape started: ", format(Sys.time()), "\n", sep="")
      cat("Results saved to ", getwd(), "/output \n", sep="")
 
@@ -110,7 +111,7 @@
      
      cat("\n\n----------------------\n")
      cat("Producing Final Results\n")
-     cat("-----------------------\n")
+     cat("-----------------------\n\n")
      
      ##Bring Together Data
      vd17 <- merge(vd17, vd17_gbv, by=c("vdn"))
@@ -120,4 +121,7 @@
      file_name <- paste("./output/vd17_scrape_", Sys.Date(), ".csv", sep="")
      write.csv(vd17, file_name, row.names=F)
      write.csv(vd17, "/var/www/html/data/test_scrape_results.csv", row.names=F)
+     
+     cat("Scrape ended: ", format(Sys.time()), "\n", sep="")
+     saveRDS(format(Sys.time(), '%B %d, %Y @ %I:%M %p'), "./scrape_reporting/end_time.rds")
      sink()
