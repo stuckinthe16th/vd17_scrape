@@ -27,7 +27,7 @@ for(x in 1:length(scrape_years)){
 }
 pacman::p_load("hwriter")
 library("hwriter")
-cat(hwrite(scrape_results_stats, width='50%', center=TRUE, row.bgcolor='#dd3333', row.style=list('font-weight:bold; text-align:center; font-coloer:black')))
+cat(hwrite(scrape_results_stats, width='50%', center=TRUE, row.names=FALSE, row.bgcolor='#dd3333', row.style=list('font-weight:bold; text-align:center; font-coloer:black')))
 
 ```
 
