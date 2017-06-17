@@ -65,7 +65,7 @@
      cat("------------------------\n\n")
      
      ##For Working: Subset Results
-     vd17_sample = sample(1:nrow(vd17), 100, replace=F)
+     vd17_sample = sample(1:nrow(vd17), 500, replace=F)
      vd17 <- vd17[vd17_sample,]
      
      ##Set-up Progress Tracker

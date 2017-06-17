@@ -7,6 +7,8 @@ if (!require('RWordPress')) {
      devtools::install_github(c("duncantl/XMLRPC", "duncantl/RWordPress"))
 }
 library(RWordPress)
+devtools::install_github('yihui/knitr', build_vignettes = TRUE)
+
 
 #Set login parameters
 options(WordpressLogin = c(russg = 'skoal90'), WordpressURL = 'http://earlymodernprinting.com/xmlrpc.php')
