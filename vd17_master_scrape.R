@@ -39,12 +39,12 @@
      ##Perform Search, Scrape Each Result, Loop by Year
      for(year_loop in years){
           temp_df <- gb_search_gen(year_loop)
+          temp_df$year_gb <- year_loop #NOTE: NEED TO ACTUALLY EXTRACT YEAR LATER
           if(year_loop==years[1]){
                vd17 <- temp_df
           } else{
                vd17 <- bind_rows(vd17, temp_df)
           }
-          vd17$year_gb <- year_loop  #NOT: NEED TO ACTUALLY EXTRACT YEAR LATER
      }
      
      ##Cleaning Results
