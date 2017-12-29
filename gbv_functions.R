@@ -20,7 +20,7 @@ gbv_scrape <- function(url){
                html_nodes("span div:nth-child(2) table") %>%
                html_table()
      result_table <- as.data.frame(result_table)
-     result_table[1,2] <- "Normnummer"
+     #result_table[1,2] <- "Normnummer"
      
      #Remove Extraneous Results
      trip <- 0
