@@ -22,6 +22,7 @@
      ## Load Functions
      source("gbv_functions.R")
      source("gb_functions.R")
+     source("year_selection.R")
 
      
      
@@ -34,7 +35,7 @@
      cat("-----------------------------------\n")
      
      ##For Working: Subset Results
-     years = sample(1601:1699, 3, replace=F)
+     years = year_selection()
 
      ##Perform Search, Scrape Each Result, Loop by Year
      for(year_loop in years){
@@ -118,7 +119,7 @@
      
      ##Save Ouput and Clean Workspace
      rm(list=setdiff(ls(), "vd17"))
-     file_name <- paste("./output/vd17_scrape_", Sys.Date(), ".csv", sep="")
+     file_name <- paste("./output/vd17_scrape_", years[[1]], ".csv", sep="")
      write.csv(vd17, file_name, row.names=F)
      write.csv(vd17, "/var/www/html/data/test_scrape_results.csv", row.names=F)
      

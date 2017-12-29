@@ -6,3 +6,6 @@ remote_start_bash.bat
 remote_start_commands.txt
 vd17_master_scrape_ouput.txt
 useful_git_commands
+output
+vd17_working_scrape.R
+scrape_test_results.html
