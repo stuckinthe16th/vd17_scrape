@@ -7,7 +7,10 @@ if (!require('RWordPress')) {
      devtools::install_github(c("duncantl/XMLRPC", "duncantl/RWordPress"))
 }
 library(RWordPress)
-devtools::install_github('yihui/knitr', build_vignettes = TRUE)
+if (!require('knitr')) {
+     devtools::install_github('yihui/knitr', build_vignettes = TRUE)
+}
+library(knitr)
 
 
 #Set login parameters
