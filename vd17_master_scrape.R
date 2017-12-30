@@ -83,13 +83,17 @@
           
           
           url <- paste("https://gso.gbv.de/DB=1.28/CMD?ACT=SRCHA&IKT=8002&TRM=%27", vd17$vdn[x], "%27/LNG=EN/", sep="")
-          temp_df <- gbv_scrape(url)
-          temp_df$permlink_gbv <- url
-          if(x==1){
-               vd17_gbv <- temp_df
-          } else{
-               vd17_gbv <- bind_rows(vd17_gbv, temp_df)
-          }
+          tryCatch({
+               temp_df <- gbv_scrape(url)
+               temp_df$permlink_gbv <- url
+               if(x==1){
+                    vd17_gbv <- temp_df
+               } else{
+                    vd17_gbv <- bind_rows(vd17_gbv, temp_df)
+               }
+          }, error = function(error){
+               print(paste("Error in ", x, ".  Skipping..."))     
+          })
      }
      
      ##Clean Results
