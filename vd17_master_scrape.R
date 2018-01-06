@@ -20,13 +20,13 @@
      rm(list = ls())
 
      ## Check for Running Scrape
-     load(file="running_scrape.RData")
-     if(running_scrape==TRUE){
-          stop("Currently Running Script, Will Retry in 6 Hours")
-     } else{
-          running_scrape <- TRUE
-          save(running_scrape, file="running_scrape.RData")
-     }
+     #load(file="running_scrape.RData")
+     #if(running_scrape==TRUE){
+     #     stop("Currently Running Script, Will Retry in 6 Hours")
+     #} else{
+     #     running_scrape <- TRUE
+     #     save(running_scrape, file="running_scrape.RData")
+     #}
      
      ## Load Functions
      source("gbv_functions.R")
