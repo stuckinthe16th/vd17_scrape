@@ -19,6 +19,15 @@
      ## Clear Environment
      rm(list = ls())
 
+     ## Check for Running Scrape
+     load(file="running_scrape.RData")
+     if(running_scrape==TRUE){
+          stop("Currently Running Script, Will Retry in 6 Hours")
+     } else{
+          running_scrape <- TRUE
+          save(running_scrape, file="running_scrape.RData")
+     }
+     
      ## Load Functions
      source("gbv_functions.R")
      source("gb_functions.R")
@@ -129,4 +138,8 @@
      cat("Scrape ended: ", format(Sys.time()), "\n", sep="")
      saveRDS(format(Sys.time(), '%B %d, %Y @ %I:%M %p'), "./scrape_reporting/end_time.rds")
      rm(list=setdiff(ls(), "vd17"))
+     
+     ##Reset Running Scrape
+     running_scrape <- FALSE
+     save(running_scrape, file="running_scrape.RData")
      sink()
