@@ -133,7 +133,7 @@
      ##Save Ouput and Clean Workspace
      file_name <- paste("./output/vd17_scrape_", years[[1]], ".csv", sep="")
      write.csv(vd17, file_name, row.names=F)
-     write.csv(vd17, "/var/www/html/data/test_scrape_results.csv", row.names=F)
+     #write.csv(vd17, "/var/www/html/data/test_scrape_results.csv", row.names=F)
      
      cat("Scrape ended: ", format(Sys.time()), "\n", sep="")
      saveRDS(format(Sys.time(), '%B %d, %Y @ %I:%M %p'), "./scrape_reporting/end_time.rds")
