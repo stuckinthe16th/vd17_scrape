@@ -6,7 +6,8 @@
 
 ### Load Libraries and Other Set-up
      
-     sink(file="./scrape_reporting/test_scrape_output.txt", append=FALSE, split=TRUE)
+     report_file <- paste("./scrape_reporting/scrape_report_", format(Sys.time(), "%Y-%m-%d---%H"), ".txt", sep="")
+     sink(file=report_file, append=FALSE, split=TRUE)
      cat("\n\n--------------------------------------------\n")
      cat("--------------------------------------------\n")
      cat("Scrape of the VD17 Catalogue of German Books\n")
@@ -18,22 +19,11 @@
 
      ## Clear Environment
      rm(list = ls())
-
-     ## Check for Running Scrape
-     #load(file="running_scrape.RData")
-     #if(running_scrape==TRUE){
-     #     stop("Currently Running Script, Will Retry in 6 Hours")
-     #} else{
-     #     running_scrape <- TRUE
-     #     save(running_scrape, file="running_scrape.RData")
-     #}
      
      ## Load Functions
      source("gbv_functions.R")
      source("gb_functions.R")
      source("year_selection.R")
-
-     
      
 
 ### Initial Scrape: Gateway-Bayern
@@ -63,7 +53,6 @@
      names(vd17) <- c("vdn", "author_gb", "title_gb", "year_gb", "imprint_gb", "collation_gb", "author_information_gb", "other_people_gb", "other_information_gb", "permlink_gb")
      vd17$vdn <- sapply(vd17$vdn, function(x){gsub("VD17 ", "", x)})
      cat("Completed\n\n")
-          
       
      
      
@@ -73,10 +62,6 @@
      cat("\n\n------------------------\n")
      cat("Processing Data from GBV\n")
      cat("------------------------\n\n")
-     
-     ##For Working: Subset Results
-     #vd17_sample = sample(1:nrow(vd17), 500, replace=F)
-     #vd17 <- vd17[vd17_sample,]
      
      ##Set-up Progress Tracker
      total <- nrow(vd17)
@@ -101,7 +86,7 @@
                     vd17_gbv <- bind_rows(vd17_gbv, temp_df)
                }
           }, error = function(error){
-               print(paste("Error in ", x, ".  Skipping..."))     
+               cat("Error in ", x, ".  Skipping...", sep="")     
           })
      }
      
@@ -133,13 +118,9 @@
      ##Save Ouput and Clean Workspace
      file_name <- paste("./output/vd17_scrape_", years[[1]], ".csv", sep="")
      write.csv(vd17, file_name, row.names=F)
-     #write.csv(vd17, "/var/www/html/data/test_scrape_results.csv", row.names=F)
      
      cat("Scrape ended: ", format(Sys.time()), "\n", sep="")
      saveRDS(format(Sys.time(), '%B %d, %Y @ %I:%M %p'), "./scrape_reporting/end_time.rds")
      rm(list=setdiff(ls(), "vd17"))
      
-     ##Reset Running Scrape
-     running_scrape <- FALSE
-     save(running_scrape, file="running_scrape.RData")
      sink()
