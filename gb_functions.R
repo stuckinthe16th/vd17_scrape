@@ -121,6 +121,9 @@ gb_search_gen <- function(year) {
      while (next_loop == "go") {
           cur_pos <- cur_pos + 10
           cur_pos_page <- cur_pos_page + 1
+          if(cur_pos_page>500){
+               next_loop <- "stop"
+          }
           cat("\r", "Scraping ", year, " Page: ", cur_pos_page, "       ", sep="")
           pagination <- page_result %>%
                html_nodes(".anchor+ .navigation a") %>%
