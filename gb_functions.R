@@ -149,6 +149,11 @@ gb_search_gen <- function(year) {
                cur_pos_page <- cur_pos_page + 1
           }
           
+=======
+          if(cur_pos_page>500){
+               next_loop <- "stop"
+          }
+>>>>>>> 5853c4e27c0e8e3faf2b0cd5d8b91f2c9f74318e
           cat("\r", "Scraping ", year, " Page: ", cur_pos_page, "       ", sep="")
           pagination <- page_result %>%
                html_nodes(".anchor+ .navigation a") %>%
