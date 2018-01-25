@@ -137,33 +137,38 @@ cat("-----------------------------\n")
      write.csv(subject_table_year, file="output/subject_output/cleaned_scrape_all.csv", row.names=FALSE, na="")
      
      ## Find Top Five Subjects
-     cat("\n Finding top five subjects...")
-     top_subjects <- aggregate(subject_table_year$sum_count,list(subject_table_year$subject), sum)
+     cat("\n Finding top twelve subjects...")
+     total_books_year <- aggregate(subject_table_year$sum_count,list(subject_table_year$year), sum)
+     names(total_books_year) <- c("year", "total_books")
+     subject_table_year <- merge(subject_table_year, total_books_year, ID="year")
+     subject_table_year$avg <- subject_table_year$sum_count/subject_table_year$total_books
+     top_subjects <- aggregate(subject_table_year$avg,list(subject_table_year$subject), mean)
      top_subjects <- top_subjects[order(-top_subjects$x), ]
-     top_subjects <- top_subjects$Group.1[1:5]
+     top_subjects_5 <- top_subjects$Group.1[1:5]
+     top_subjects_12 <- top_subjects$Group.1[1:12]
      cat("\n They are: ")
-     cat(top_subjects, sep=", ")
-     top_subject_table_year <- subject_table_year[subject_table_year$subject %in% top_subjects, ]
+     cat(top_subjects_12, sep=", ")
+     top_subject_table_year_5 <- subject_table_year[subject_table_year$subject %in% top_subjects_5, ]
+     top_subject_table_year_12 <- subject_table_year[subject_table_year$subject %in% top_subjects_12, ]
      
      ## Generate Charts
      cat("\n\n Generating charts on subject popularity over time...")
      scaleFUN <- function(x) sprintf("%.0f", x)
-     gg <- ggplot(top_subject_table_year, aes(x=year, y=sum_count, color=subject)) + 
-          geom_line(size =1.5) + 
+     gg <- ggplot(top_subject_table_year_5, aes(x=year, y=avg*100, color=subject)) + 
+          geom_line(size =1) + 
           scale_colour_manual(values=c("#d7191c", "#fdae61", "#ffffbf", "#abdda4", "#2b83ba")) + 
           scale_x_continuous(breaks=seq(1600, 1699, 5)) + theme(legend.position="bottom", legend.box = "horizontal", axis.title.x=element_blank(), legend.title.align=0.5, title=element_text(face="bold", margin=c(4,4,4,4)), plot.title=element_text(size=24)) + 
           guides(color = guide_legend(title = "Subjects", title.position = "bottom")) + 
-          labs(y="#of Books") + ggtitle("Popularity of Subjects Over Time")
+          labs(y="% of Books") + ggtitle("Popularity of Subjects Over Time") +
+          geom_vline(xintercept = 1618, linetype="dotted", color = "red") + geom_vline(xintercept = 1648, linetype="dotted", color = "red")
      cat("\n Saving color graph to output/subject_output/subjects_over_time_color.png...")
-     ggsave("output/subject_output/subjects_over_time_color.png", plot = gg)
-     gg <- ggplot(top_subject_table_year, aes(x=year, y=sum_count, shape=subject)) + geom_point(size=3) + scale_x_continuous(breaks=seq(1600, 1699, 5)) + theme(legend.position="bottom", legend.box = "horizontal", axis.title.x=element_blank(), legend.title.align=0.5, title=element_text(face="bold", margin=c(4,4,4,4)), plot.title=element_text(size=24)) + 
+     ggsave("output/subject_output/subjects_over_time_color.png", plot = gg, width= 9.42, height=6.81)
+     gg <- ggplot(top_subject_table_year_5, aes(x=year, y=avg*100, shape=subject)) + geom_point(size=1) + scale_x_continuous(breaks=seq(1600, 1699, 5)) + theme(legend.position="bottom", legend.box = "horizontal", axis.title.x=element_blank(), legend.title.align=0.5, title=element_text(face="bold", margin=c(4,4,4,4)), plot.title=element_text(size=24)) + 
           guides(shape = guide_legend(title = "Subjects", title.position = "bottom")) + 
-          labs(y="#of Books") + ggtitle("Popularity of Subjects Over Time")
+          labs(y="% of Books") + ggtitle("Popularity of Subjects Over Time") +
+          geom_vline(xintercept = 1618, linetype="dotted") + geom_vline(xintercept = 1648, linetype="dotted")
      cat("\n Saving b/w graph to output/subject_output/subjects_over_time_bw.png...")
-     ggsave("output/subject_output/subjects_over_time_bw.png", plot = gg)
+     ggsave("output/subject_output/subjects_over_time_bw.png", plot = gg, width= 9.42, height=6.81)
      gg<- ggplot(top_subject_table_year_12, aes(x=year, y=avg*100)) + geom_line(size =2) + facet_wrap(~subject, ncol=3) + scale_x_continuous(breaks=seq(1600, 1699, 20)) + theme(axis.title.x=element_blank(), title=element_text(face="bold", margin=c(4,4,4,4))) + labs(y="% of Books") + ggtitle("Popularity of Subjects Over Time") + geom_vline(xintercept = 1618, linetype="dotted", color = "red") + geom_vline(xintercept = 1648, linetype="dotted", color = "red")
      cat("\n Saving panel graph to output/subject_output/subjects_over_time_panel.png...")
-     ggsave("output/subject_output/subjects_over_time_panel.png", plot = gg)
-     
-
-     
+     ggsave("output/subject_output/subjects_over_time_panel.png", plot = gg, width= 9.42, height=6.81)
