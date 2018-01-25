@@ -124,29 +124,39 @@ gb_search_gen <- function(year) {
           
           ##INSERTION TO STOP INFINITE LOOPING; WHEN IT GETS OUT OF HAND, RESTART PRACTICE
           if(cur_pos_page>500){
-               cat("\r", "ERROR, RESTARTING...       ", sep="")
-               cur_pos <- 1
-               cur_pos_page <- 1
-               url <-
-                    "https://opacplus.bib-bvb.de/TouchPoint_touchpoint/start.do?SearchProfile=Altbestand&SearchType=2"
-               pgsession <- html_session(url)
-               pgform <- html_form(pgsession)[[1]]
-               filled_form <- set_values(
-                    pgform,
-                    "searchRestrictionValue1[0]" = year,
-                    "searchRestrictionValue2[0]" = year
-               )
-               suppressMessages(page_result <- submit_form(session = pgsession, form = filled_form))
-               list_vdn <- page_result %>%
-                    html_nodes("b") %>%
-                    html_text()
-               cat("\n", "Scraping ", year, " Page: ", cur_pos_page, "       ", sep="")
-               assign(paste(year, "_data", sep = ""),
-                      gb_search_process(list_vdn, year, cur_pos_page))
-               next_loop <- "go"
-               page_result <- html(page_result$url)
-               cur_pos <- cur_pos + 10
-               cur_pos_page <- cur_pos_page + 1
+               cat("\r", "ERROR, RESTARTING...       \n\n\n", sep="")
+               load(file="years_left_to_process.RData")
+               years_left_to_process <- append(years_left_to_process, year)
+               save(years_left_to_process, file="years_left_to_process.RData")
+               rm(list=ls())
+               source("vd17_master_scrape.R")
+               
+               
+               #system("Rscript vd17_master_scrape.R")
+               
+               
+               # cur_pos <- 1
+               # cur_pos_page <- 1
+               # url <-
+               #      "https://opacplus.bib-bvb.de/TouchPoint_touchpoint/start.do?SearchProfile=Altbestand&SearchType=2"
+               # pgsession <- html_session(url)
+               # pgform <- html_form(pgsession)[[1]]
+               # filled_form <- set_values(
+               #      pgform,
+               #      "searchRestrictionValue1[0]" = year,
+               #      "searchRestrictionValue2[0]" = year
+               # )
+               # suppressMessages(page_result <- submit_form(session = pgsession, form = filled_form))
+               # list_vdn <- page_result %>%
+               #      html_nodes("b") %>%
+               #      html_text()
+               # cat("\n", "Scraping ", year, " Page: ", cur_pos_page, "       ", sep="")
+               # assign(paste(year, "_data", sep = ""),
+               #        gb_search_process(list_vdn, year, cur_pos_page))
+               # next_loop <- "go"
+               # page_result <- html(page_result$url)
+               # cur_pos <- cur_pos + 10
+               # cur_pos_page <- cur_pos_page + 1
           }
           
           cat("\r", "Scraping ", year, " Page: ", cur_pos_page, "       ", sep="")
