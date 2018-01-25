@@ -161,6 +161,9 @@ cat("-----------------------------\n")
           labs(y="#of Books") + ggtitle("Popularity of Subjects Over Time")
      cat("\n Saving b/w graph to output/subject_output/subjects_over_time_bw.png...")
      ggsave("output/subject_output/subjects_over_time_bw.png", plot = gg)
+     gg<- ggplot(top_subject_table_year_12, aes(x=year, y=avg*100)) + geom_line(size =2) + facet_wrap(~subject, ncol=3) + scale_x_continuous(breaks=seq(1600, 1699, 20)) + theme(axis.title.x=element_blank(), title=element_text(face="bold", margin=c(4,4,4,4))) + labs(y="% of Books") + ggtitle("Popularity of Subjects Over Time") + geom_vline(xintercept = 1618, linetype="dotted", color = "red") + geom_vline(xintercept = 1648, linetype="dotted", color = "red")
+     cat("\n Saving panel graph to output/subject_output/subjects_over_time_panel.png...")
+     ggsave("output/subject_output/subjects_over_time_panel.png", plot = gg)
      
 
      
