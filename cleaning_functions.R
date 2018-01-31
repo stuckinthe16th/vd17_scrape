@@ -182,7 +182,7 @@ cat("------------------------\n")
                labs(y="% of Books") + ggtitle("Popularity of Subjects Over Time") +
                geom_vline(xintercept = 1618, linetype="dotted", color = "red") + geom_vline(xintercept = 1648, linetype="dotted", color = "red")
           cat("\n Saving color graph to output/subject_output/subjects_over_time_color.png...")
-          ggsave("output/subject_output/subjects_over_time_color.png", plot = gg)
+          ggsave("output/subject_output/subjects_over_time_color.png", plot = gg, width=8, height=4, dpi=600, units="in")
           
           # Top Five B/W
           gg <- ggplot(top_subject_table_year_5, aes(x=year, y=avg*100, shape=subject)) + geom_point(size=1) + scale_x_continuous(breaks=seq(1600, 1699, 5)) + theme(legend.position="bottom", legend.box = "horizontal", axis.title.x=element_blank(), legend.title.align=0.5, title=element_text(face="bold", margin=c(4,4,4,4)), plot.title=element_text(size=24)) + 
@@ -190,17 +190,17 @@ cat("------------------------\n")
                labs(y="% of Books") + ggtitle("Popularity of VD17 Categories Over Time") +
                geom_vline(xintercept = 1618, linetype="dotted") + geom_vline(xintercept = 1648, linetype="dotted")
           cat("\n Saving b/w graph to output/subject_output/subjects_over_time_bw.png...")
-          ggsave("output/subject_output/subjects_over_time_bw.png", plot = gg)
+          ggsave("output/subject_output/subjects_over_time_bw.png", plot = gg, width=8, height=4, dpi=600, units="in")
           
           # Top Twelve Panel Line
           gg<- ggplot(top_subject_table_year_12, aes(x=year, y=avg*100)) + geom_line(size =2) + facet_wrap(~subject, ncol=3) + scale_x_continuous(breaks=seq(1600, 1699, 20)) + theme(axis.title.x=element_blank(), title=element_text(face="bold", margin=c(4,4,4,4))) + labs(y="% of Books") + ggtitle("Popularity of VD17 Categories Over Time") + geom_vline(xintercept = 1618, linetype="dotted", color = "red") + geom_vline(xintercept = 1648, linetype="dotted", color = "red")
           cat("\n Saving panel graph to output/subject_output/subjects_over_time_panel_line.png...")
-          ggsave("output/subject_output/subjects_over_time_panel_line.png", plot = gg)
+          ggsave("output/subject_output/subjects_over_time_panel_line.png", plot = gg, width=8, height=4, dpi=600, units="in")
           
           # Top Twelve Dot Panel
           gg<- ggplot(top_subject_table_year_12, aes(x=year, y=avg*100)) + geom_point(size=0.5) + geom_smooth(aes(year, avg*100, color=factor(change_avg_desc))) + facet_wrap(~subject, ncol=3) + scale_x_continuous(breaks=seq(1600, 1699, 20)) + theme(axis.title.x=element_blank(), legend.title = element_blank(), title=element_text(face="bold", margin=c(4,4,4,4))) + labs(y="% of Books") + ggtitle("Popularity of VD17 Categories Over Time") + geom_vline(xintercept = 1618, linetype="dotted", color = "red") + geom_vline(xintercept = 1648, linetype="dotted", color = "red")
           cat("\n Saving panel graph to output/subject_output/subjects_over_time_panel_dot.png...")
-          ggsave("output/subject_output/subjects_over_time_panel_dot.png", plot = gg)
+          ggsave("output/subject_output/subjects_over_time_panel_dot.png", plot = gg, width=8, height=4, dpi=600, units="in")
           
      ## Religious Patterns Over Time
      cat("\n Plotting trends in religious books...")     
@@ -231,7 +231,7 @@ cat("------------------------\n")
           
           
           cat("\n Saving graph to output/subject_output/religious_subjects_over_time_vd17.png... \n")
-          ggsave("output/subject_output/religious_subjects_over_time_vd17.png", plot = gg)
+          ggsave("output/subject_output/religious_subjects_over_time_vd17.png", plot = gg, width=8, height=4, dpi=600, units="in")
           
      ## Intra-Category Patterns
      cat("\n Plotting intra-category patterns over time...")
@@ -246,7 +246,7 @@ cat("------------------------\n")
           dissertation_table_year$dissertation_type <- trimws(gsub("Dissertation:", "", dissertation_table_year$subject))
           gg <- ggplot(dissertation_table_year, aes(x=year, y=diss_avg*100, color=dissertation_type)) + geom_point() + geom_smooth(aes(color=dissertation_type)) + scale_x_continuous(breaks=seq(1600, 1699, 20)) + theme(axis.title.x=element_blank(), title=element_text(face="bold", margin=c(4,4,4,4))) + labs(y="% of Dissertations") + ggtitle("VD17 Category 'Dissertation' Over Time") + geom_vline(xintercept = 1618, linetype="dotted", color = "red") + geom_vline(xintercept = 1648, linetype="dotted", color = "red") + labs(color="Type of\nDissertation") 
           suppressMessages(
-               ggsave("output/subject_output/vd17_dissertations_over_time.png", plot = gg)
+               ggsave("output/subject_output/vd17_dissertations_over_time.png", plot = gg, width=8, height=4, dpi=600, units="in")
           )
           
           # Gelegenheitsschrift
@@ -264,7 +264,7 @@ cat("------------------------\n")
           names(gelegenheitschrift_table_year)[names(gelegenheitschrift_table_year)=="x"] <- "avg"
           gg <- ggplot(gelegenheitschrift_table_year, aes(x=year, y=avg*100, color=likeliehood_combined)) + geom_point() + geom_smooth(aes(color=likeliehood_combined)) + scale_x_continuous(breaks=seq(1600, 1699, 20)) + theme(axis.title.x=element_blank(), title=element_text(face="bold", margin=c(4,4,4,4))) + labs(y="% of Gelegenheitschrift") + ggtitle("VD17 Category 'Gelegenheitsschrift' Over Time") + geom_vline(xintercept = 1618, linetype="dotted", color = "red") + geom_vline(xintercept = 1648, linetype="dotted", color = "red") + labs(color="Type of Gelegenheitschrift\nby Likelihood of\nBeing Religious") 
           suppressMessages(
-               ggsave("output/subject_output/vd17_gelegenheitschrift_over_time.png", plot = gg)
+               ggsave("output/subject_output/vd17_gelegenheitschrift_over_time.png", plot = gg, width=8, height=4, dpi=600, units="in")
           )
           
           # Kommentar
@@ -277,7 +277,7 @@ cat("------------------------\n")
           kommentar_table_year$kommentar_type <- trimws(gsub("Kommentar:", "", kommentar_table_year$subject))
           gg <- ggplot(kommentar_table_year, aes(x=year, y=komm_avg*100, color=kommentar_type)) + geom_point() + geom_smooth(aes(color=kommentar_type)) + scale_x_continuous(breaks=seq(1600, 1699, 20)) + theme(axis.title.x=element_blank(), title=element_text(face="bold", margin=c(4,4,4,4))) + labs(y="% of Kommentar") + ggtitle("VD17 Category 'Kommentar' Over Time") + geom_vline(xintercept = 1618, linetype="dotted", color = "red") + geom_vline(xintercept = 1648, linetype="dotted", color = "red") + labs(color="Type of\nKommentar") 
           suppressMessages(
-               ggsave("output/subject_output/vd17_kommentar_over_time.png", plot = gg)
+               ggsave("output/subject_output/vd17_kommentar_over_time.png", plot = gg, width=8, height=4, dpi=600, units="in")
           )
           
           # Streitschrift
@@ -290,5 +290,5 @@ cat("------------------------\n")
           streitschrift_table_year$streitschrift_type <- trimws(gsub("Streitschrift:", "", streitschrift_table_year$subject))
           gg <- ggplot(streitschrift_table_year, aes(x=year, y=streit_avg*100, color=streitschrift_type)) + geom_point() + geom_smooth(aes(color=streitschrift_type)) + scale_x_continuous(breaks=seq(1600, 1699, 20)) + theme(axis.title.x=element_blank(), title=element_text(face="bold", margin=c(4,4,4,4))) + labs(y="% of Streitschrift") + ggtitle("VD17 Category 'Streitschrift' Over Time") + geom_vline(xintercept = 1618, linetype="dotted", color = "red") + geom_vline(xintercept = 1648, linetype="dotted", color = "red") + labs(color="Type of\nStreitschrift") 
           suppressMessages(
-               ggsave("output/subject_output/vd17_streitschrift_over_time.png", plot = gg)
+               ggsave("output/subject_output/vd17_streitschrift_over_time.png", plot = gg, width=8, height=4, dpi=600, units="in")
           )
