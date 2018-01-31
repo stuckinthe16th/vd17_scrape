@@ -1,0 +1,196 @@
+subject,translated_subject,religious_likeliehood
+Agende,Liturgy,Very Likely
+Akustik,Acoustic,Unknown
+Alchemie,Alchemy,Likely
+Altertumskunde,Ancient Studies,Likely
+Amtsdruckschrift,Official Publication,Unknown
+Anatomie,Anatomy,Unlikely
+Anekdote,Anecdote,Unknown
+Anleitung,Manual,Unknown
+Anstandsliteratur,Conduct Literature,Unknown
+Anthologie,Anthology,Unknown
+Aphorismus,Aphorisms,Unknown
+Archäologie,Archaeology,Unlikely
+Architektur,Architecture,Very Unlikely
+Ars moriendi,Ars moriendi,Likely
+Arzneibuch,Pharmacopoeia,Very Unlikely
+Astrologie,Astrology,Likely
+Astronomie,Astronomy,Unlikely
+Atlas,Atlas,Unlikely
+Auktionskatalog,Auction Catalog,Unlikely
+Autobiographie,Autobiography,Unknown
+Beichtspiegel,Confessional,Very Likely
+Bergbau,Mining,Very Unlikely
+Bibel,Bible,Very Likely
+Bibliographie,Bibliography,Unlikely
+Bibliothekskatalog,Library Catalog,Unlikely
+Biographie,Biography,Unknown
+Botanik,Botany,Very Unlikely
+Brief,Letter,Unknown
+Briefsammlung,Letter Collection,Unknown
+Briefsteller,Letter Writing Instruction,Unlikely
+Buchbinderanweisung,Bookbinder Instruction,Very Unlikely
+Bücheranzeige,Book Advertisement,Unlikely
+Buchhandelskatalog,Bookstore Catalog,Unlikely
+Chemie,Chemistry,Very Unlikely
+Chiromantie,Palmistry,Likely
+Chirurgie,Surgery,Very Unlikely
+Chronik,Chronicle,Unlikely
+Dissertation,Dissertation,Unknown
+Dissertation:jur.,Dissertation: Law,Unlikely
+Dissertation:med.,Dissertation: Medicine,Unlikely
+Dissertation:phil.,Dissertation: Philosophy,Likely
+Dissertation:theol.,Dissertation: Theology,Very Likely
+Dissertationensammlung,Dissertation Collection,Unknown
+Drama,Drama,Unknown
+Einblattdruck,Broadsheet,Unknown
+Emblembuch,Emblem Book,Likely
+Enzyklopädie,Encyclopedia,Unlikely
+Epik,Epic,Unknown
+Festbeschreibung,Ceremonial Description,Unlikely
+Festungsbau,Fortress Construction,Very Unlikely
+Fibel,Primer,Unlikely
+Figurengedicht,Figure Poem,Unknown
+Flugschrift,Pamphlet,Unknown
+Frauenliteratur,Women's Literature,Unknown
+Fürstenspiegel,Prince's Mirror,Unlikely
+Gartenbau,Horticulture,Unlikely
+Gebet,Prayer,Very Likely
+Gebetbuch,Prayer Book,Very Likely
+Geldwesen,Finance,Unlikely
+Gelegenheitsschrift,Occasional Writing,Unknown
+Gelegenheitsschrift:Abschied,Occasional Writing: Farewell,Unlikely
+Gelegenheitsschrift:Amtsantritt,Occasional Writing: on Taking Office,Unlikely
+Gelegenheitsschrift:Begrüßung,Occasional Writing: Welcome,Unlikely
+Gelegenheitsschrift:Einladung,Occasional Writing: Invitation,Unlikely
+Gelegenheitsschrift:Einweihung,Occasional Writing: Inagguration,Unlikely
+Gelegenheitsschrift:Fest,Occasional Writing: Party,Unlikely
+Gelegenheitsschrift:Friedensschluß,Occasional Writing: Peace Treaty,Very Unlikely
+Gelegenheitsschrift:Geburt,Occasional Writing: Birth,Unlikely
+Gelegenheitsschrift:Geburtstag,Occasional Writing: Birthday,Unlikely
+Gelegenheitsschrift:Gedenken,Occasional Writing: Commemoration,Unlikely
+Gelegenheitsschrift:Hochzeit,Occsional Writing: Wedding,Likely
+Gelegenheitsschrift:Jubiläum,Occasional Writing: Anniversary,Unlikely
+Gelegenheitsschrift:Konversion,Occasional Writing: Conversion,Very Likely
+Gelegenheitsschrift:Krönung,Occsional Writing: Coronation,Likely
+Gelegenheitsschrift:Namenstag,Occasional Writing: Saint's Day,Very Likely
+Gelegenheitsschrift:Neujahr,Occasional Writing: Name Day,Likely
+Gelegenheitsschrift:Promotion,Occasional Writing: Promotion,Unlikely
+Gelegenheitsschrift:Sieg,Occasional Writing: Victory,Unlikely
+Gelegenheitsschrift:Taufe,Occasional Writing: Baptism,Very Likely
+Gelegenheitsschrift:Tod,Occaional Writing: Death,Likely
+Gelegenheitsschrift:Visitation,Occsional Writing: Visitation,Unknown
+Genealogie,Genealogy,Unlikely
+Geographie,Geography,Unlikely
+Geologie,Geology,Very Unlikely
+Geometrie,Geometry,Very Unlikely
+Gesangbuch,Hymnal,Very Likely
+Gesellschaftsschrift,Company Writing,Unlikely
+Gesetzessammlung,Collection of Laws,Unknown
+Grammatik,Grammar,Unlikely
+Gynäkologie,Gynecology,Unlikely
+Hausväterliteratur,Housekeeper Literature,Unlikely
+Hochschulschrift,Univeristy Writing,Unknown
+Itinerar,History,Unlikely
+Jagdliteratur,Hunting Literature,Unlikely
+Judaicum,Jewish Literature,Likely
+Jugendbuch,Youth Book,Unknown
+Kalender,Calendar,Unknown
+Katechismus,Catechism,Very Likely
+Kirchenlied,Hymn,Very Likely
+Kochbuch,Cook Book,Very Unlikely
+Kommentar,Commentary,Unknown
+Kommentar: hist.,Commentary: History,Unlikely
+Kommentar: jur.,Commentary: Legal,Unlikely
+Kommentar: polit.,Commentary: Political,Unlikely
+Kommentar: theol.,Commentary: Theology,Very Likely
+Kriegskunde,Warfare,Unlikely
+Landwirtschaft,Agriculture,Unlikely
+Legende,Legend,Unknown
+Leichenpredigt,Funeral Oration,Likely
+Leichenpredigtsammlung,Collection of Funeral Orations,Likely
+Lexikon,Lexicon,Unknown
+Libretto,Opera,Unlikely
+Lied,Song,Unknown
+Liedersammlung,Song Collection,Unknown
+Lyrik,Lyric,Unknown
+Magnetismus,Magnetism,Unlikely
+Mathematik,Mathematical,Very Unlikely
+Matrikel,Register,Unknown
+Mechanik,Mechanics,Very Unlikely
+Medizin,Medicine,Unlikely
+Meßkatalog,Fair Catalogue,Unlikely
+Meßrelation,Fair News,Unlikely
+Mineralogie,Minearology,Very Unlikely
+Musikbuch,Music Book,Unlikely
+Musterbuch,Pattern Book,Unlikely
+Optik,Optics,Very Unlikely
+Ordensliteratur,Order Literature,Very Likely
+Ordensliteratur:Augustiner,Order Literature: Augustinian,Very Likely
+Ordensliteratur: Barefoot Augustinian,Order Literature: Augustinian,Very Likely
+Ordensliteratur:Augustiner-Chorherren,Order Literature: Augustinian Canons,Very Likely
+Ordensliteratur:Augustiner-Eremiten,Order Literature: Augustinian Hermits,Very Likely
+Ordensliteratur:Barnabiten,Order Literature: Barnabites,Very Likely
+Ordensliteratur:Benediktiner,Order Literature: Benedictine,Very Likely
+Ordensliteratur:Dominikaner,Order Literature: Dominican,Very Likely
+Ordensliteratur:Franziskaner,Order Literature: Fransiscan,Very Likely
+Ordensliteratur:Jesuiten,Order Literature: Jesuit,Very Likely
+Ordensliteratur:Kapuziner,Order Literature: Capuchin,Very Likely
+Ordensliteratur:Karmeliter,Order Literature: Carmelite,Very Likely
+Ordensliteratur:Kartäuser,Order Literature: Carthusian,Very Likely
+Ordensliteratur:Minimen,Order Literature: Minimen,Very Likely
+Ordensliteratur:Minoriten,Order Literature: Minority,Very Likely
+Ordensliteratur:Oratorianer,Order Literature: Oration,Very Likely
+Ordensliteratur:Pra¨monstratenser,Order Literature: Praemonstratensis,Very Likely
+Ordensliteratur:Prämonstratenser,Order Literature: Praemonstratensis,Very Likely
+Ordensliteratur:Theatiner,Order Literature: Theatines,Very Likely
+Ordensliteratur:Unbeschuhte Karmeliter,Order Literature: Discalced Carmelites,Very Likely
+Ordensliteratur:Zisterzienser,Order Literature: Cistercian,Very Likely
+Pädagogik,Pedagogy,Unlikely
+Perioche,Perioche,Unknown
+Pflanzenbuch,Plants Book,Unlikely
+Physik,Physics,Unlikely
+Physiognomie,Physiognomy,Unlikely
+Poetik,Poetics,Unknown
+Porträtwerk,Portrait Work,Unknown
+Praktik,Practice,Unknown
+Predigt,Sermon,Very Likely
+Predigtsammlung,Sermon Collection,Very Likely
+Rechenbuch,Arithmetic Book,Unlikely
+Rede,Speech,Unknown
+Regesten,History of Legal Documents,Unlikely
+Reisebericht,Travelogue,Unlikely
+Rhetorik,Rhetoric,Unlikely
+Roman,Novel,Unknown
+Sage,Legend,Unknown
+Satire,Satire,Unknown
+Schäferdichtung,Pastoral Poetry,Very Likely
+Schreibmeisterbuch,Writing Master Book,Unlikely
+Schulbuch,School Book,Unlikely
+Schulprogramm,School Program,Unlikely
+Schwank,Farce,Unknown
+Spiel,Play,Unknown
+Sprachführer,Phrasebook,Unlikely
+Sprichwortsammlung,Proverb Collection,Likely
+Streitschrift,Polemic,Unknown
+Streitschrift:jur.,Polemic: Legal,Unlikely
+Streitschrift:polit.,Polemic: Political,Unlikely
+Streitschrift:theol.,Polemic: Theology,Very Likely
+Theaterzettel,Playbill,Unlikely
+Tierbuch,Beastiary,Unlikely
+Tiermedizin,Animal Medicine,Unlikely
+Topographie,Topography,Very Unlikely
+Totentanz,Dance of Death,Likely
+Urkundenbuch,Collection of Medieval Documents,Unknown
+Verordnung,Regulation,Unlikely
+Verserzählung,Narrative Poem,Unknown
+Vertrag,Contract,Unlikely
+Volksbuch,Chapbook,Unknown
+Vorlesung,Lecture,Unknown
+Vorlesungsverzeichnis,Course Catalogue,Unlikely
+Wappenbuch,Armorial,Very Unlikely
+Wörterbuch,Dictionary,Very Unlikely
+Zeitschrift,Magazine,Unlikely
+Zeitung,Newspaper,Unlikely
+Zitatensammlung,Quote Collection,Unknown
+Zoologie,Zoology,Unlikely
